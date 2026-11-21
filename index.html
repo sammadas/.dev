@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Samma Das | Personal 3D Portfolio</title>
+  <meta name="description" content="Explore the personal portfolio of Samma Das, showcasing creative interests, photo editing, website development, and digital projects.">
+  <meta name="theme-color" content="#040507">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Samma Das | Personal 3D Portfolio">
+  <meta property="og:description" content="Explore the personal portfolio of Samma Das, showcasing creative interests, photo editing, website development, and digital projects.">
+  <!-- After publishing, set your real address: <link rel="canonical" href="https://YOUR-SITE-ADDRESS/"> -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/favicon.svg">
+  <script>
+    /* Apply saved or system theme before first paint to avoid a flash */
+    try {
+      var t = localStorage.getItem("sd-theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Hind+Siliguri:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader"><div class="loader-mark">SD</div></div>
+
+  <!-- Fixed 3D background -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="nav glass" id="nav">
+    <a href="#home" class="brand"><span class="mark" aria-hidden="true">SD</span><span>SAMMA DAS</span></a>
+    <nav class="menu" id="menu">
+      <a href="#home" data-i18n="nav_home">HOME</a>
+      <a href="#about" data-i18n="nav_about">ABOUT</a>
+      <a href="#skills" data-i18n="nav_skills">SKILLS</a>
+      <a href="#projects" data-i18n="nav_projects">PROJECTS</a>
+      <a href="#education" data-i18n="nav_education">EDUCATION</a>
+      <a href="#contact" data-i18n="nav_contact">CONTACT</a>
+    </nav>
+    <div class="nav-right">
+      <button type="button" id="themeBtn" class="theme-btn" aria-label="Toggle light or dark theme">◐</button>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="bn" class="lang-btn">বাংলা</button>
+        <span>|</span>
+        <button type="button" data-lang="en" class="lang-btn">EN</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <div class="hero-text">
+        <h1 class="hero-name">
+          <span class="line" data-i18n="name_en">SAMMA DAS</span>
+          <span class="line bn" data-i18n="name_bn">সাম্য দাশ</span>
+        </h1>
+        <p class="hero-role" data-i18n="hero_role">CREATIVE DESIGNER & WEB DEVELOPER</p>
+        <p class="hero-tag" data-i18n="tagline">Turning Ideas Into Digital Experiences.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" data-i18n="btn_projects">View Projects</a>
+          <a href="#contact" class="btn" data-i18n="btn_contact">Contact Me</a>
+        </div>
+      </div>
+      <figure class="portrait portrait-sm glass-frame">
+        <img src="assets/images/profile.jpg" alt="Samma Das" loading="eager"
+             onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="portrait-fallback" hidden>SD</div>
+      </figure>
+      <a href="#about" class="scroll-hint" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <figure class="portrait portrait-lg glass-frame reveal">
+        <img src="assets/images/profile.jpg" alt="Samma Das portrait" loading="lazy"
+             onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="portrait-fallback" hidden>SD</div>
+      </figure>
+      <div class="about-copy">
+        <h2 class="title reveal" data-i18n="about_title">About Me</h2>
+        <p class="reveal" data-i18n="bio">My name is Samma Das. I am from Chattogram, Bangladesh.</p>
+        <dl class="facts reveal">
+          <div><dt data-i18n="f_location">Location</dt><dd data-i18n="f_location_v">Chattogram, Bangladesh</dd></div>
+          <div><dt data-i18n="f_edu">Institution</dt><dd data-i18n="f_edu_v">Chattogram Government Polytechnic Institute</dd></div>
+          <div><dt data-i18n="f_dept">Department</dt><dd data-i18n="f_dept_v">Electrical Technology</dd></div>
+          <div><dt data-i18n="f_hobby">Hobbies</dt><dd data-i18n="f_hobby_v">Reading books, learning technologies, exploring creative ideas</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="title reveal" data-i18n="skills_title">Skills & Interests</h2>
+      <div class="grid" id="skillGrid"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="title reveal" data-i18n="projects_title">Creative Projects</h2>
+      <div class="grid" id="projectGrid"></div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2 class="title reveal" data-i18n="edu_title">Education</h2>
+      <ol class="timeline">
+        <li class="glass reveal">
+          <h3 data-i18n="edu_inst">Chattogram Government Polytechnic Institute</h3>
+          <p data-i18n="edu_dept">Department of Electrical Technology</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2 class="title reveal" data-i18n="contact_title">Let's Connect</h2>
+      <div class="social" id="socialGrid"></div>
+      <p class="contact-line reveal">
+        <a href="mailto:sammaeditor@gmail.com">sammaeditor@gmail.com</a>
+        <span>·</span>
+        <a href="tel:01975093159">01975093159</a>
+      </p>
+      <div class="cv-box glass" id="cvBox" hidden>
+        <div><h3 data-i18n="cv_title">Curriculum Vitae</h3><p data-i18n="cv_desc">Education, skills and interests in one document.</p></div>
+        <a class="btn btn-primary" href="assets/documents/samma-das-cv.pdf" download data-i18n="cv_btn">Download CV</a>
+      </div>
+      <form class="form glass reveal" id="contactForm" novalidate>
+        <h3 data-i18n="form_title">Send a message</h3>
+        <label><span data-i18n="f_name">Full name</span><input name="name" required autocomplete="name"></label>
+        <label><span data-i18n="f_mail">Email</span><input name="email" type="email" required autocomplete="email"></label>
+        <label><span data-i18n="f_subject">Subject</span><input name="subject" required></label>
+        <label><span data-i18n="f_msg">Message</span><textarea name="message" rows="5" required></textarea></label>
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-msg" id="formMsg" role="status"></p>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" data-i18n="btn_send">Send</button>
+          <a class="btn" href="mailto:sammaeditor@gmail.com" data-i18n="btn_mailfallback">Open in email app</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">SAMMA DAS</div>
+    <p class="clock" id="clock" aria-label="Bangladesh time (Asia/Dhaka)"></p>
+    <p data-i18n="tagline">Turning Ideas Into Digital Experiences.</p>
+    <p class="small">Designed & Developed by Samma Das · © <span id="year"></span></p>
+  </footer>
+
+  <button class="to-top glass" id="toTop" aria-label="Back to top">↑</button>
+
+  <!-- Libraries (pinned versions) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
